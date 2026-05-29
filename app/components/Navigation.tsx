@@ -73,13 +73,13 @@ export default function Navigation() {
             </Link>
           </li>
           <li role="none">
-            <Link href="/#features" className="nav-link" role="menuitem" onClick={closeMenu}>
+            <Link href="/features" className="nav-link" role="menuitem" onClick={closeMenu}>
               <FeaturesIcon />
               Features
             </Link>
           </li>
           <li role="none">
-            <Link href="/#events" className="nav-link" role="menuitem" onClick={closeMenu}>
+            <Link href="/events" className="nav-link" role="menuitem" onClick={closeMenu}>
               <EventsIcon />
               Events
             </Link>

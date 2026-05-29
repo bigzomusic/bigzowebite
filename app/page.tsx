@@ -1,20 +1,103 @@
+'use client'
+
 import Image from 'next/image'
 import Script from 'next/script'
+import { ContainerScroll } from '@/components/ui/container-scroll-animation'
+import MusicPortfolio from '@/components/ui/music-portfolio'
+import { motion } from 'framer-motion'
+import { Calendar, MapPin, Ticket, Clock, ChevronRight, Flame, Disc3, Zap } from 'lucide-react'
+
+/* ── Countdown Component ─────────────────── */
+function AlbumCountdown() {
+  const releaseDate = new Date('2026-06-01T00:00:00-04:00')
+  const now = new Date()
+  const diff = releaseDate.getTime() - now.getTime()
+  const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)))
+  const hours = Math.max(0, Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
+  const minutes = Math.max(0, Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)))
+
+  return (
+    <div className="countdown-grid">
+      <div className="countdown-unit">
+        <span className="countdown-number fire-text">{days}</span>
+        <span className="countdown-label">DAYS</span>
+      </div>
+      <div className="countdown-separator">:</div>
+      <div className="countdown-unit">
+        <span className="countdown-number fire-text">{hours}</span>
+        <span className="countdown-label">HRS</span>
+      </div>
+      <div className="countdown-separator">:</div>
+      <div className="countdown-unit">
+        <span className="countdown-number fire-text">{minutes}</span>
+        <span className="countdown-label">MIN</span>
+      </div>
+    </div>
+  )
+}
+
+/* ── Track Data ──────────────────────────── */
+const tracks = [
+  {
+    title: "Vent",
+    type: "Single",
+    year: "2024",
+    albumArt: "https://i.pinimg.com/736x/9f/10/23/9f1023c3785097536e164d3ef7ac9fb6.jpg",
+  },
+  {
+    title: "Slide",
+    type: "Single",
+    year: "2024",
+    albumArt: "https://i.pinimg.com/736x/bf/f0/4d/bff04d662db206377de801ec0bc42804.jpg",
+  },
+  {
+    title: "No Love",
+    type: "Single",
+    year: "2023",
+    albumArt: "https://i.pinimg.com/736x/90/cf/ec/90cfec4c5230978dba450909c676fd42.jpg",
+  },
+  {
+    title: "Pain",
+    type: "Single",
+    year: "2023",
+    albumArt: "https://i.pinimg.com/736x/8a/9d/06/8a9d06bccabc53834aa311fb3beb75f6.jpg",
+  },
+]
 
 export default function Home() {
   return (
     <>
       {/* ══════════════════════════════════════
-          HERO SECTION
+          HERO — Streetwear Landing
           ══════════════════════════════════════ */}
       <section className="hero" id="hero">
+        <div className="hero-bg-noise" />
         <div className="hero-inner">
-          
           <div className="hero-content">
-            <div className="hero-eyebrow animate-fade-in-up delay-1">Global Artist</div>
-            <h1 className="hero-title fire-text animate-fade-in-up delay-2" style={{ marginBottom: '1.5rem' }}>BIGZO</h1>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="hero-eyebrow"
+            >
+              Global Artist
+            </motion.div>
+            <motion.h1
+              className="hero-title fire-text"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              style={{ marginBottom: '1.5rem' }}
+            >
+              BIGZO
+            </motion.h1>
 
-            <div className="hero-stats animate-fade-in-up delay-3">
+            <motion.div
+              className="hero-stats"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
               <div className="hero-stat">
                 <div className="hero-stat-number">135+</div>
                 <div className="hero-stat-label">Countries</div>
@@ -27,9 +110,15 @@ export default function Home() {
                 <div className="hero-stat-number">∞</div>
                 <div className="hero-stat-label">Ambition</div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="platform-links animate-fade-in-up delay-4" style={{ marginTop: '1.5rem' }}>
+            <motion.div
+              className="platform-links"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              style={{ marginTop: '1.5rem' }}
+            >
               <a href="https://open.spotify.com/artist/07ZqHkqPIjjH8wrCpYQQxg" target="_blank" rel="noopener noreferrer" className="platform-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" /></svg>
                 Spotify
@@ -50,50 +139,99 @@ export default function Home() {
                 </svg>
                 TikTok
               </a>
-            </div>
+            </motion.div>
           </div>
-
-          <div className="hero-image-wrapper animate-fade-in-up">
-            <Image
-              src="/bigzo-studio.jpg"
-              alt="BigZo in the recording studio"
-              fill
-              sizes="(max-width: 968px) 100vw, 50vw"
-              priority
-            />
-          </div>
-
         </div>
       </section>
 
       {/* ══════════════════════════════════════
-          MUSIC SECTION — Spotify + YouTube
+          INTRO & SPOTIFY
+          ══════════════════════════════════════ */}
+      <section className="section-padding" style={{ paddingBottom: '2rem', paddingTop: '2rem', position: 'relative', zIndex: 1 }}>
+        <div className="section-container" style={{ maxWidth: '800px' }}>
+          <div style={{ marginBottom: '2rem' }}>
+            <iframe data-testid="embed-iframe" style={{ borderRadius: '12px' }} src="https://open.spotify.com/embed/track/2IQRm4GtcEoMiYWxPiF2p3?utm_source=generator" width="100%" height="152" frameBorder="0" allowFullScreen={false} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          
+          <div className="glass-panel" style={{ padding: '1rem', display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+            <div style={{ position: 'relative', width: '120px', height: '120px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent)', flexShrink: 0 }}>
+              <Image src="/bigzo-studio.jpg" alt="BigZo" fill style={{ objectFit: 'cover' }} />
+            </div>
+            <div style={{ flex: '1 1 300px' }}>
+              <h3 className="fire-text" style={{ fontSize: '1.5rem', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)' }}>Who is BigZo?</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+                Global hip-hop artist streaming in 135+ countries. Known for relentless ambition, high-energy performances, and raw lyricism.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          SONG PROMO — I Aint Write This
+          ══════════════════════════════════════ */}
+      <section id="album-promo" className="album-promo-section">
+        <div className="album-promo-bg" />
+        <ContainerScroll
+          titleComponent={
+            <>
+              <div className="album-promo-eyebrow">
+                <Flame size={18} />
+                <span>NEW SONG DROPPING</span>
+                <Flame size={18} />
+              </div>
+              <h2 className="album-promo-title">
+                I AINT WRITE THIS
+              </h2>
+              <p className="album-promo-date">06 • 01 • 2026</p>
+              <AlbumCountdown />
+              <p className="album-promo-tagline">
+                &ldquo;Real music. Real pain. Real life.&rdquo;
+              </p>
+            </>
+          }
+        >
+          <Image
+            src="/album-cover.png"
+            alt="I Aint Write This — BigZo Song Cover"
+            height={720}
+            width={1400}
+            className="mx-auto rounded-2xl object-cover h-full"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
+            draggable={false}
+          />
+        </ContainerScroll>
+      </section>
+
+      {/* ══════════════════════════════════════
+          MUSIC SECTION — Spotify + YouTube + Tracks
           ══════════════════════════════════════ */}
       <section id="music" className="section-padding" style={{ position: 'relative', zIndex: 1, background: 'var(--bg)' }}>
         <div className="section-container">
-          <h2 className="section-title fire-text">Music</h2>
+          <div className="section-header-row">
+            <Disc3 className="section-header-icon" size={28} />
+            <h2 className="section-title fire-text">Music</h2>
+          </div>
           <div className="fire-divider" />
           <p className="section-subtitle" style={{ marginTop: '1.5rem' }}>
             Stream BigZo worldwide on all major platforms
           </p>
 
-          <div className="music-grid">
+          {/* Track artwork portfolio list */}
+          <div className="tracks-portfolio mt-12 mb-16">
+            <MusicPortfolio tracks={tracks} />
+          </div>
+
+          <div className="music-grid" style={{ marginTop: '4rem' }}>
             {/* Spotify Embed */}
             <div>
-              <h3 style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '1.4rem',
-                letterSpacing: '0.1em',
-                marginBottom: '1rem',
-                color: 'var(--text-muted)',
-              }}>
-                NOW PLAYING
-              </h3>
+              <h3 className="music-section-label">NOW PLAYING</h3>
               <div className="music-embed" style={{ marginBottom: '1.5rem' }}>
                 <iframe
                   src="https://open.spotify.com/embed/track/2IQRm4GtcEoMiYWxPiF2p3?utm_source=generator&theme=0"
                   width="100%"
                   height="152"
+                  frameBorder="0"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
                   title="BigZo on Spotify — Now Playing"
@@ -113,15 +251,7 @@ export default function Home() {
 
             {/* YouTube Embed */}
             <div>
-              <h3 style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '1.4rem',
-                letterSpacing: '0.1em',
-                marginBottom: '1rem',
-                color: 'var(--text-muted)',
-              }}>
-                LATEST VIDEO
-              </h3>
+              <h3 className="music-section-label">LATEST VIDEO</h3>
               <div className="music-embed" style={{ borderRadius: 'var(--radius)', overflow: 'hidden' }}>
                 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
                   <iframe
@@ -134,55 +264,71 @@ export default function Home() {
                   />
                 </div>
               </div>
-
-              {/* Photo Gallery */}
-              <div style={{ marginTop: '1.5rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div style={{ position: 'relative', borderRadius: 'var(--radius)', overflow: 'hidden', aspectRatio: '1', border: '1px solid var(--glass-border)' }}>
-                    <Image
-                      src="/bigzo-guess.png"
-                      alt="BigZo in front of GUESS sign wearing Rockstar gear"
-                      fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div style={{ position: 'relative', borderRadius: 'var(--radius)', overflow: 'hidden', aspectRatio: '1', border: '1px solid var(--glass-border)' }}>
-                    <Image
-                      src="/bigzo-red.png"
-                      alt="BigZo in red-lit studio session"
-                      fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════
-          EVENTS SECTION
+          EVENTS SECTION — Upgraded
           ══════════════════════════════════════ */}
-      <section id="events" className="section-padding" style={{ position: 'relative', zIndex: 1, background: 'linear-gradient(180deg, var(--bg) 0%, #050505 100%)' }}>
-        <div className="section-container" style={{ maxWidth: '900px' }}>
-          <h2 className="section-title fire-text">Events</h2>
+      <section id="events" className="section-padding events-section">
+        <div className="events-bg-glow" />
+        <div className="section-container" style={{ maxWidth: '1000px' }}>
+          <div className="section-header-row">
+            <Zap className="section-header-icon" size={28} />
+            <h2 className="section-title fire-text">Events</h2>
+          </div>
           <div className="fire-divider" />
           <p className="section-subtitle" style={{ marginTop: '1.5rem' }}>
             See BigZo perform live
           </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div className="card event-card">
-              <div>
-                <div className="event-date">JUN 12, 2026</div>
-                <div className="event-name">The Ohio Takeover</div>
-                <div className="event-location">Columbus, OH &bull; Main Stage</div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="event-card-premium"
+          >
+            <div className="event-card-left">
+              <div className="event-date-badge">
+                <Calendar size={16} />
+                <span>JUN 12, 2026</span>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', letterSpacing: '0.05em' }}>$15</div>
+              <h3 className="event-name-premium">The Ohio Takeover</h3>
+              <div className="event-details-row">
+                <div className="event-detail">
+                  <MapPin size={14} />
+                  <span>Columbus, OH • Main Stage</span>
+                </div>
+                <div className="event-detail">
+                  <Clock size={14} />
+                  <span>Doors @ 7 PM</span>
+                </div>
+              </div>
+              <p className="event-description">
+                BigZo headlines the Main Stage for the biggest night in Ohio hip-hop.
+                Don&apos;t miss this — it&apos;s going to be legendary.
+              </p>
+            </div>
+
+            <div className="event-card-right">
+              <div className="event-image-wrapper">
+                <Image
+                  src="/bigzo-guess.png"
+                  alt="BigZo performing live"
+                  width={400}
+                  height={500}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
+                  className="rounded-xl shadow-2xl"
+                />
+              </div>
+              <div className="event-price-row">
+                <div className="event-price">
+                  <Ticket size={18} />
+                  <span>$15</span>
+                </div>
                 <a
                   href="https://ticketnut.com/buy/6791"
                   target="_blank"
@@ -190,10 +336,11 @@ export default function Home() {
                   className="btn-primary"
                 >
                   <span>Get Tickets</span>
+                  <ChevronRight size={18} />
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -209,12 +356,13 @@ export default function Home() {
           </p>
 
           <div className="glass-panel" style={{ padding: '1.5rem', overflow: 'hidden', background: '#0a0a0a' }}>
-            <div
-              className="calendly-inline-widget"
-              data-url="https://calendly.com/bigzomusic-proton/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=e11d48"
-              style={{ minWidth: '320px', height: '700px' }}
-            />
-            <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
+            <iframe 
+              src="https://calendly.com/bigzomusic-proton/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=f2a900" 
+              width="100%" 
+              height="700" 
+              frameBorder="0"
+              style={{ minWidth: '320px' }}
+            ></iframe>
           </div>
         </div>
       </section>

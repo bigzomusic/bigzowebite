@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter, New_Rocker } from 'next/font/google'
+import { Inter, New_Rocker, Geist } from 'next/font/google'
 import Link from 'next/link'
 import Navigation from './components/Navigation'
 import './globals.css'
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const newRocker = New_Rocker({ weight: '400', subsets: ['latin'], variable: '--font-rockstar' })
@@ -131,7 +134,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <head>
         <script
           type="application/ld+json"
@@ -161,8 +164,8 @@ export default function RootLayout({
                   <h4>Navigate</h4>
                   <ul>
                     <li><Link href="/">Home</Link></li>
-                    <li><Link href="/#features">Features</Link></li>
-                    <li><Link href="/#events">Events</Link></li>
+                    <li><Link href="/features">Features</Link></li>
+                    <li><Link href="/events">Events</Link></li>
                     <li><Link href="/about">About</Link></li>
                   </ul>
                 </div>
