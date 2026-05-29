@@ -1186,8 +1186,257 @@ img {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(225, 29, 72, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(242, 169, 0, 0.08) 0%, transparent 70%);
   pointer-events: none;
+}
+
+/* ============================================
+   Event Countdown (Live ticker)
+   ============================================ */
+
+.event-countdown-wrap {
+  text-align: center;
+  margin: 2.5rem 0 3rem;
+}
+
+.event-countdown-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 1rem;
+  background: rgba(242, 169, 0, 0.08);
+  border: 1px solid rgba(242, 169, 0, 0.15);
+  border-radius: 20px;
+}
+
+.event-countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.event-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  min-width: 72px;
+  transition: all 0.3s ease;
+}
+
+.event-countdown-unit:hover {
+  border-color: rgba(242, 169, 0, 0.3);
+  background: rgba(242, 169, 0, 0.05);
+}
+
+.event-countdown-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  line-height: 1;
+  background: var(--fire-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.event-countdown-sublabel {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ============================================
+   Ohio Takeover Card
+   ============================================ */
+
+.ohio-takeover-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(242, 169, 0, 0.04));
+  border: 1px solid rgba(242, 169, 0, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  text-align: center;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.ohio-takeover-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--fire-gradient);
+}
+
+.ohio-takeover-card:hover {
+  border-color: rgba(242, 169, 0, 0.25);
+  box-shadow: 0 0 80px rgba(242, 169, 0, 0.08), var(--shadow-card);
+}
+
+.ohio-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  background: var(--fire-gradient);
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.ohio-card-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 5rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  background: linear-gradient(135deg, #fff 0%, #f2a900 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  text-shadow: none;
+}
+
+.ohio-card-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ohio-card-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.ohio-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.ohio-detail svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.ohio-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ohio-ticket-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ohio-ticket-btn:hover {
+  transform: scale(1.05);
+}
+
+.ohio-directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 2rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.ohio-directions-btn svg {
+  color: var(--accent);
+}
+
+.ohio-directions-btn:hover {
+  border-color: var(--accent);
+  background: rgba(242, 169, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(242, 169, 0, 0.15);
+}
+
+@media (max-width: 640px) {
+  .ohio-takeover-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .ohio-card-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-countdown-grid {
+    gap: 0.5rem;
+  }
+
+  .event-countdown-unit {
+    padding: 0.75rem 0.75rem;
+    min-width: 60px;
+  }
+
+  .event-countdown-number {
+    font-size: 1.6rem;
+  }
 }
 
 .events-hero {
