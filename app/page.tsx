@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import MusicPortfolio from '@/components/ui/music-portfolio'
 import { Calendar, MapPin, Ticket, Clock, Flame, Disc3, Zap, Navigation, ExternalLink } from 'lucide-react'
-import { HeroFuturistic } from '@/components/ui/hero-futuristic'
+import { BigZoHero } from '@/components/ui/bigzo-hero'
 import { MagneticDock } from '@/components/ui/magnetic-dock'
 import { GlowingShadow } from '@/components/ui/glowing-shadow'
+import { CinematicFooter } from '@/components/ui/motion-footer'
 
 
 /* ── Live Countdown Hook ─────────────────── */
@@ -31,7 +32,7 @@ function useCountdown(targetDate: Date) {
     tick()
     const interval = setInterval(tick, 1000)
     return () => clearInterval(interval)
-  }, [targetDate])
+  }, [targetDate.getTime()])
 
   return timeLeft
 }
@@ -100,14 +101,14 @@ export default function Home() {
   return (
     <>
       {/* ══════════════════════════════════════
-          HERO — Futuristic BigZo Intro
+          HERO — BigZo Animated Text
           ══════════════════════════════════════ */}
-      <section id="hero" className="relative w-full h-screen">
-        <HeroFuturistic />
+      <section id="hero" className="relative w-full">
+        <BigZoHero />
       </section>
 
       {/* FIXED BOTTOM DOCK */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] scale-90 md:scale-100">
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] scale-75 md:scale-100">
         <MagneticDock items={dockItems} />
       </div>
 
@@ -268,6 +269,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════
+          CINEMATIC FOOTER
+          ══════════════════════════════════════ */}
+      <CinematicFooter />
     </>
   )
 }
