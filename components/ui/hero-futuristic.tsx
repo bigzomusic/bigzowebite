@@ -109,7 +109,7 @@ const Scene = () => {
     const dist = float(tiledUv.length());
     const dot = float(smoothstep(0.5, 0.49, dist)).mul(brightness);
     const depth = tDepthMap;
-    const flow = oneMinus(smoothstep(0, 0.05, abs(depth.sub(uProgress))));
+    const flow = oneMinus(smoothstep(0, 0.05, abs(depth.r.sub(uProgress))));
     const mask = dot.mul(flow).mul(vec3(5, 4, 1)); // gold hue for waves
 
     const final = blendScreen(tMap, mask);
