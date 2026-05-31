@@ -1,23 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import MusicPortfolio from '@/components/ui/music-portfolio'
-import { Calendar, MapPin, Ticket, Clock, Flame, Disc3, Zap, Navigation, ExternalLink } from 'lucide-react'
 import { BigZoHero } from '@/components/ui/bigzo-hero'
-import { MagneticDock } from '@/components/ui/magnetic-dock'
+import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 import { GlowingShadow } from '@/components/ui/glowing-shadow'
-import { CinematicFooter } from '@/components/ui/motion-footer'
+import { MagneticDock } from '@/components/ui/magnetic-dock'
+import MusicPortfolio from '@/components/ui/music-portfolio'
+import { Calendar, Clock, Disc3, Flame, MapPin, Navigation, Ticket, Zap } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 
 /* ── Live Countdown Hook ─────────────────── */
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  const targetTime = targetDate.getTime()
 
   useEffect(() => {
     const tick = () => {
       const now = new Date()
-      const diff = targetDate.getTime() - now.getTime()
+      const diff = targetTime - now.getTime()
       if (diff <= 0) {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
         return
@@ -32,7 +33,7 @@ function useCountdown(targetDate: Date) {
     tick()
     const interval = setInterval(tick, 1000)
     return () => clearInterval(interval)
-  }, [targetDate.getTime()])
+  }, [targetTime])
 
   return timeLeft
 }
@@ -54,7 +55,7 @@ function EventCountdown() {
           { value: hours, label: 'HRS' },
           { value: minutes, label: 'MIN' },
           { value: seconds, label: 'SEC' },
-        ].map((item, i) => (
+        ].map((item) => (
           <div key={item.label} className="event-countdown-unit">
             <span className="event-countdown-number">{String(item.value).padStart(2, '0')}</span>
             <span className="event-countdown-sublabel">{item.label}</span>
@@ -66,7 +67,7 @@ function EventCountdown() {
 }
 
 /* ── Track Data ──────────────────────────── */
-const tracks: any[] = []
+const tracks: never[] = []
 
 /* ── Bottom Dock Items ──────────────────── */
 const dockItems = [
@@ -108,10 +109,70 @@ export default function Home() {
       </section>
 
       {/* FIXED BOTTOM DOCK */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] scale-75 md:scale-100">
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-100 scale-75 md:scale-100">
         <MagneticDock items={dockItems} />
       </div>
 
+
+      {/* ══════════════════════════════════════
+          NEW RELEASE — I Ain't Write This
+          ══════════════════════════════════════ */}
+      <section id="new-release" className="relative w-full bg-black overflow-hidden">
+        <ContainerScroll
+          titleComponent={
+            <div className="flex flex-col items-center gap-5 pb-6 text-center">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/50 text-yellow-400 text-xs uppercase tracking-widest font-bold">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5" aria-hidden="true"><path d="M9 18V5l12-2v13M6 21a3 3 0 100-6 3 3 0 000 6zm12-2a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                New Single
+              </span>
+              <h2
+                className="text-5xl md:text-[5.5rem] font-black text-white uppercase leading-none tracking-wider"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                I Ain&apos;t Write This
+              </h2>
+              <p className="text-yellow-400 text-lg font-bold uppercase tracking-[0.2em]">
+                Dropping June 1st, 2026
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
+                <a
+                  href="https://open.spotify.com/artist/07ZqHkqPIjjH8wrCpYQQxg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full font-black text-sm uppercase tracking-widest transition-all duration-300 hover:scale-105 active:scale-95"
+                  style={{
+                    background: 'linear-gradient(135deg, #1DB954 0%, #1ed760 100%)',
+                    boxShadow: '0 0 30px rgba(29,185,84,0.45)',
+                    color: '#000',
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="currentColor" aria-hidden="true">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                  </svg>
+                  Stream on Spotify
+                </a>
+                <a
+                  href="https://open.spotify.com/artist/07ZqHkqPIjjH8wrCpYQQxg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-yellow-500/70 hover:text-yellow-400 transition-colors underline underline-offset-4 tracking-wider"
+                >
+                  View Artist Profile →
+                </a>
+              </div>
+            </div>
+          }
+        >
+          <Image
+            src="/i-aint-write-this-album.png"
+            alt="I Ain't Write This — BigZo"
+            width={800}
+            height={800}
+            className="mx-auto w-full h-full object-cover rounded-2xl"
+            draggable={false}
+          />
+        </ContainerScroll>
+      </section>
 
       {/* ══════════════════════════════════════
           MUSIC SECTION — Spotify + YouTube + Tracks
@@ -259,10 +320,10 @@ export default function Home() {
           </p>
 
           <div className="glass-panel" style={{ padding: '1.5rem', overflow: 'hidden', background: '#0a0a0a' }}>
-            <iframe 
-              src="https://calendly.com/bigzomusic-proton/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=f2a900" 
-              width="100%" 
-              height="700" 
+            <iframe
+              src="https://calendly.com/bigzomusic-proton/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=f2a900"
+              width="100%"
+              height="700"
               frameBorder="0"
               style={{ minWidth: '320px' }}
             ></iframe>
@@ -270,10 +331,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          CINEMATIC FOOTER
-          ══════════════════════════════════════ */}
-      <CinematicFooter />
     </>
   )
 }

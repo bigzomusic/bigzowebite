@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import { Inter, New_Rocker, Geist } from 'next/font/google'
-import Link from 'next/link'
-import Navigation from './components/Navigation'
-import './globals.css'
 import { cn } from "@/lib/utils";
+import type { Metadata } from 'next';
+import { Geist, Inter, New_Rocker } from 'next/font/google';
+import Link from 'next/link';
+import Navigation from './components/Navigation';
+import './globals.css';
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -143,8 +143,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} ${inter.variable} ${newRocker.variable}`}>
         <Navigation />
-
-        <main id="main-content" style={{ marginTop: '0' }}>
+        <main id="main-content" style={{ paddingTop: '96px' }}>
           {children}
         </main>
 
