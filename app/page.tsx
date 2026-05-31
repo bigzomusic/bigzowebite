@@ -263,7 +263,7 @@ export default function Home() {
             </div>
 
             <h3 className="ohio-card-title">OHIO TAKEOVER</h3>
-            <p className="ohio-card-subtitle">Columbus, OH — The biggest hip-hop event of the summer</p>
+            <p className="ohio-card-subtitle">No Class — Cleveland, OH — The biggest hip-hop event of the summer</p>
 
             <div className="ohio-card-details">
               <div className="ohio-detail">
@@ -276,7 +276,7 @@ export default function Home() {
               </div>
               <div className="ohio-detail">
                 <MapPin size={18} />
-                <span>Columbus, Ohio</span>
+                <span>No Class, 11213 Detroit Ave, Cleveland, OH</span>
               </div>
             </div>
 
@@ -295,7 +295,7 @@ export default function Home() {
               </GlowingShadow>
 
               <a
-                href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x8830f1c20fb709a9:0x9d30bdf4d260866d?entry=s&sa=X&ved=2ahUKEwjD4vrgysuUAxV-HYYAHf-HJZsQ4kB6BAgZEAA&hl=en"
+                href="https://www.google.com/maps/place/11213+Detroit+Ave,+Cleveland,+OH+44102"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ohio-directions-btn"

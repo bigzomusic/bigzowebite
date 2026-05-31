@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const newRocker = New_Rocker({ weight: '400', subsets: ['latin'], variable: '--font-rockstar' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bigzo.com'),
+  metadataBase: new URL('https://bigzomusic.com'),
   title: {
     default: 'BigZo | Global Hip-Hop Artist — Official Website',
     template: '%s | BigZo',
@@ -61,11 +61,11 @@ export const metadata: Metadata = {
     title: 'BigZo | Global Hip-Hop Artist — Official Website',
     description:
       'Stream BigZo music worldwide. Global hip-hop artist in 135+ countries. Latest drops, events, and features.',
-    url: 'https://bigzo.com',
+    url: 'https://bigzomusic.com',
     siteName: 'BigZo',
     images: [
       {
-        url: 'https://bigzo.com/1566479.jpg',
+        url: 'https://bigzomusic.com/1566479.jpg',
         width: 1200,
         height: 1500,
         alt: 'BigZo - Global Hip-Hop Artist',
@@ -80,10 +80,10 @@ export const metadata: Metadata = {
     description:
       'Stream BigZo music in 135+ countries. Official website for music, events, and bookings.',
     creator: '@bigzomusic',
-    images: ['https://bigzo.com/1566479.jpg'],
+    images: ['https://bigzomusic.com/1566479.jpg'],
   },
   alternates: {
-    canonical: 'https://bigzo.com',
+    canonical: 'https://bigzomusic.com',
   },
 }
 
@@ -120,11 +120,11 @@ const jsonLd = {
   '@type': 'MusicGroup',
   name: 'BigZo',
   alternateName: ['Big Zo', 'BIGZO'],
-  url: 'https://bigzo.com',
+  url: 'https://bigzomusic.com',
   genre: ['Hip-Hop', 'Rap'],
   description:
     'BigZo is a global hip-hop artist with music streaming in 135+ countries worldwide.',
-  image: 'https://bigzo.com/1566479.jpg',
+  image: 'https://bigzomusic.com/1566479.jpg',
   sameAs: [
     'https://open.spotify.com/artist/07ZqHkqPIjjH8wrCpYQQxg',
     'https://www.youtube.com/@bigzo423',
