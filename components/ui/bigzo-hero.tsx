@@ -88,7 +88,7 @@ export function BigZoHero() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/50 text-yellow-400 text-xs uppercase tracking-widest font-bold">
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5" aria-hidden="true"><path d="M9 18V5l12-2v13M6 21a3 3 0 100-6 3 3 0 000 6zm12-2a3 3 0 100-6 3 3 0 000 6z"/></svg>
-            New Single &middot; Releasing June 1st, 2026
+            I Ain&apos;t Write This &middot; Out Now
           </span>
           <a
             href="https://open.spotify.com/artist/07ZqHkqPIjjH8wrCpYQQxg"
