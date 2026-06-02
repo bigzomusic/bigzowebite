@@ -248,7 +248,7 @@ export default function Home() {
         <div className="section-container" style={{ maxWidth: '1000px' }}>
           <div className="section-header-row">
             <Zap className="section-header-icon" size={28} />
-            <h2 className="section-title fire-text">Live Events</h2>
+            <h2 className="section-title fire-text">Get Your Show Tickets Here</h2>
           </div>
           <div className="fire-divider" />
 
