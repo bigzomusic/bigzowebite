@@ -4,19 +4,7 @@ import { motion } from 'framer-motion'
 import { Calendar, ChevronRight, Clock, MapPin, Star, Ticket, Zap } from 'lucide-react'
 import Image from 'next/image'
 
-const events = [
-  {
-    date: 'JUN 12, 2026',
-    name: 'The Ohio Takeover',
-    location: 'No Class • 11213 Detroit Ave, Cleveland, OH 44102',
-    time: 'Doors @ 7 PM',
-    price: '$15',
-    ticketUrl: 'https://ticketnut.com/buy/6791',
-    description: 'BigZo headlines the Main Stage for the biggest night in Ohio hip-hop. Don\'t miss this.',
-    featured: true,
-    image: '/bigzo-guess.png',
-  },
-]
+const events: any[] = []
 
 export default function EventsPage() {
   return (

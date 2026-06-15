@@ -168,7 +168,7 @@ export default function Home() {
             alt="I Ain't Write This — BigZo"
             width={800}
             height={800}
-            className="mx-auto w-full h-full object-cover rounded-2xl"
+            className="mx-auto w-full max-w-[600px] aspect-square object-contain rounded-2xl"
             draggable={false}
           />
         </ContainerScroll>
@@ -248,63 +248,12 @@ export default function Home() {
         <div className="section-container" style={{ maxWidth: '1000px' }}>
           <div className="section-header-row">
             <Zap className="section-header-icon" size={28} />
-            <h2 className="section-title fire-text">Get Your Show Tickets Here</h2>
+            <h2 className="section-title fire-text">Shows Coming Soon</h2>
           </div>
           <div className="fire-divider" />
-
-          {/* Event Countdown Timer */}
-          <EventCountdown />
-
-          {/* Event Card */}
-          <div className="ohio-takeover-card">
-            <div className="ohio-card-badge">
-              <Flame size={14} />
-              FEATURED EVENT
-            </div>
-
-            <h3 className="ohio-card-title">OHIO TAKEOVER</h3>
-            <p className="ohio-card-subtitle">No Class — Cleveland, OH — The biggest hip-hop event of the summer</p>
-
-            <div className="ohio-card-details">
-              <div className="ohio-detail">
-                <Calendar size={18} />
-                <span>June 12, 2026</span>
-              </div>
-              <div className="ohio-detail">
-                <Clock size={18} />
-                <span>Doors @ 7 PM</span>
-              </div>
-              <div className="ohio-detail">
-                <MapPin size={18} />
-                <span>No Class, 11213 Detroit Ave, Cleveland, OH</span>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="ohio-card-actions">
-              <GlowingShadow>
-                <a
-                  href="https://ticketnut.com/buy/6791"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ohio-ticket-btn"
-                >
-                  <Ticket size={20} />
-                  <span>GET TICKETS</span>
-                </a>
-              </GlowingShadow>
-
-              <a
-                href="https://www.google.com/maps/place/11213+Detroit+Ave,+Cleveland,+OH+44102"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ohio-directions-btn"
-              >
-                <Navigation size={18} />
-                <span>Directions</span>
-              </a>
-            </div>
-          </div>
+          <p className="text-center text-gray-400 mt-8 text-lg font-medium tracking-wide">
+            New tour dates and performances will be announced shortly.
+          </p>
         </div>
       </section>
 
