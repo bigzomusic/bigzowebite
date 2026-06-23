@@ -9,6 +9,11 @@ import { Calendar, Clock, Disc3, Flame, MapPin, Navigation, Ticket, Zap } from '
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
+const featuredVideo = {
+  embedUrl: 'https://www.youtube.com/embed/XXc1Tlsw0ZU?rel=0',
+  watchUrl: 'https://www.youtube.com/watch?v=XXc1Tlsw0ZU',
+}
+
 
 /* ── Live Countdown Hook ─────────────────── */
 function useCountdown(targetDate: Date) {
@@ -172,6 +177,36 @@ export default function Home() {
             draggable={false}
           />
         </ContainerScroll>
+
+        <div className="release-video-showcase">
+          <div className="release-video-copy">
+            <span className="release-video-kicker">Official Video</span>
+            <h3 className="release-video-title">Watch &ldquo;I Ain&apos;t Write This&rdquo;</h3>
+            <p className="release-video-text">
+              The new drop is live now on YouTube.
+            </p>
+            <a
+              href={featuredVideo.watchUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="release-video-link"
+            >
+              Watch on YouTube
+            </a>
+          </div>
+
+          <div className="music-embed release-video-shell">
+            <div className="release-video-frame">
+              <iframe
+                src={featuredVideo.embedUrl}
+                title="BigZo — I Ain&apos;t Write This"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ══════════════════════════════════════
@@ -194,7 +229,6 @@ export default function Home() {
           </div>
 
           <div className="music-grid" style={{ marginTop: '4rem' }}>
-            {/* Spotify Embed */}
             <div>
               <h3 className="music-section-label">NOW PLAYING</h3>
               <div className="music-embed" style={{ marginBottom: '1.5rem' }}>
@@ -217,23 +251,6 @@ export default function Home() {
                   loading="lazy"
                   title="BigZo Spotify Artist Profile"
                 />
-              </div>
-            </div>
-
-            {/* YouTube Embed */}
-            <div>
-              <h3 className="music-section-label">LATEST VIDEO</h3>
-              <div className="music-embed" style={{ borderRadius: 'var(--radius)', overflow: 'hidden' }}>
-                <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
-                  <iframe
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    src="https://www.youtube.com/embed/sVgAMrEXCTs"
-                    title="BigZo — Latest Music Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
               </div>
             </div>
           </div>
