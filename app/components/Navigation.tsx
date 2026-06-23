@@ -61,8 +61,10 @@ export default function Navigation() {
           })}
           <li role="none">
             <a
-              href="mailto:bigzoproduction15@gmail.com"
+              href="https://calendly.com/bigzomusic-proton/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=f2a900"
               className="nav-cta"
+              target="_blank"
+              rel="noopener noreferrer"
               role="menuitem"
               onClick={closeMenu}
             >
